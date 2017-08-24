@@ -12,24 +12,10 @@ public abstract class DoodleOperation {
     public static final String TAG = "DoodleOperation";
     protected IModelManager mModelManager;
     protected IVisualManager mVisualManager;
-    // protected List<DrawTool> mAllDrawTools;
     protected FrameCache mFrameCache;
 
     protected boolean mIsCreatingCommand = true;
 
-    // public DoodleOperation(SurfaceHolder surfaceHolder, FrameCache
-    // frameCache) {
-    // mSurfaceHolder = surfaceHolder;
-    // mFrameCache = frameCache;
-    // }
-
-    // public DoodleOperation(SurfaceHolder surfaceHolder, FrameCache
-    // frameCache,
-    // List<DrawTool> allDrawTools, CommandsManager commandsManager) {
-    // mSurfaceHolder = surfaceHolder;
-    // mFrameCache = frameCache;
-    // mAllDrawTools = allDrawTools;
-    // mCommandsManager = commandsManager;
     // }
 
     public DoodleOperation(FrameCache frameCache, IModelManager modelManager,
@@ -46,15 +32,6 @@ public abstract class DoodleOperation {
         onDraw(canvas);
     }
 
-    // /**
-    // * 绘制之前
-    // */
-    // public abstract void beforeDraw();
-    //
-    // /**
-    // * 绘制之后
-    // */
-    // public abstract void afterDraw();
 
     /**
      *
@@ -70,11 +47,6 @@ public abstract class DoodleOperation {
      */
     public abstract Rect computerDirty();
 
-    // /**
-    // * 创建该IDrawStatus的绘制策略
-    // */
-    // protected abstract DrawStrategy createDrawStrategy(Canvas canvas,
-    // FrameCache frameCache);
 
     public abstract ICommand onCreateCommand();
 
@@ -90,9 +62,6 @@ public abstract class DoodleOperation {
         return onCreateCommand();
     }
 
-    public boolean isCreatingCommand() {
-        return mIsCreatingCommand;
-    }
 
     /**
      * 是否创建ICommand。

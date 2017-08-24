@@ -112,17 +112,6 @@ public class VisualManagerImpl implements IVisualManager,
         }
     }
 
-    @Override
-    public int getVisuleElementCount() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int getVisuleElementMemory() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
 
     /**********************************************************************
      * IVisualManager实现开始
@@ -164,7 +153,13 @@ public class VisualManagerImpl implements IVisualManager,
     @Override
     public void onClear() {
         // TODO Auto-generated method stub
-
+        ClearOperation clearOperation = new ClearOperation(
+                mInternalDoodle.getFrameCache(),
+                mInternalDoodle.getModelManager(),
+                mInternalDoodle.getVisualManager());
+        mInternalDoodle.insertOperation(clearOperation);
+        mHardInsertObjectCache.clear();
+        mSoftInsertObjectCache.clear();
     }
 
     @Override

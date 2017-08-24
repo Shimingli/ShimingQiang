@@ -39,7 +39,6 @@ public interface IInternalDoodle {
 
     IVisualManager getVisualManager();
 
-    ICommandsManager getCommandsManager();
 
     /**
      * 获得当前的输入模式
@@ -51,13 +50,4 @@ public interface IInternalDoodle {
     DoodleEnum.SelectionMode getSelectionMode();
 
 
-    /***
-     * 返回整个doodleView
-     *
-     * @return
-     */
-    DoodleView getDoodleView();
-
-
-    // public Context getContext();
 }

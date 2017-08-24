@@ -85,7 +85,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
 
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
-            // TODO Auto-generated method stub
             if (mDrawThread != null) {// 线程好像不能start两次，这里直接释放掉已有线程
                 mDrawThread.mLoop = false;
                 mDrawThread = null;
@@ -133,7 +132,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
             DrawAllOperation operation = new DrawAllOperation(mFrameCache,
                     mModelManager, mVisualManager);
             insertOperation(operation);// 第一次重绘所有的
-            // mCommandsManager.enable();
         }
     };
 
@@ -330,8 +328,12 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
      */
     public void clear() {
         mModelManager.exitSelectionMode();
+        //删除的方法最为关键
         mModelManager.clear();
+
         mCommandsManager.clear();
+
+
     }
 
 
@@ -433,10 +435,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
         return mVisualManager;
     }
 
-    @Override
-    public ICommandsManager getCommandsManager() {
-        return mCommandsManager;
-    }
 
     @Override
     public DoodleEnum.InputMode getInputMode() {
@@ -485,13 +483,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
         // TODO Auto-generated method stub
         return mSelectionMode;
     }
-
-    @Override
-    public DoodleView getDoodleView() {
-        // TODO Auto-generated method stub
-        return this;
-    }
-
 
 
     /**

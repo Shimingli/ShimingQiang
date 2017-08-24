@@ -14,55 +14,28 @@ public interface IModelManager {
 
     void clear();
 
-    /**
-     * 清空所有笔画，包括图形识别
-     */
-    void clearStokes();
 
-    void addInsertableObject(InsertableObjectBase object);
 
     void addInsertableObject(InsertableObjectBase object,
                              boolean fromUndoRedo);
 
-    void addInsertableObject(List<InsertableObjectBase> list);
 
-    void addInsertableObject(List<InsertableObjectBase> list,
-                             boolean fromUndoRedo);
-
-    void removeInsertableObject(InsertableObjectBase object);
 
     void removeInsertableObject(InsertableObjectBase object,
                                 boolean fromUndoRedo);
 
-    void removeInsertableObject(List<InsertableObjectBase> list);
 
-    void removeInsertableObject(List<InsertableObjectBase> list,
-                                boolean fromUndoRedo);
 
     void addIsertableObjectListener(IIsertableObjectListener listener);
 
-    void removeIsertableObjectListener(IIsertableObjectListener listener);
-
-    void addSeletedChangedListener(ISelectedChangedListener listener);
-
-    void removeInsertableObjectSeletedListener(
-            ISelectedChangedListener listener);
 
     void addTouchEventListener(ITouchEventListener listener);
 
-    void removeTouchEventListener(ITouchEventListener listener);
 
     /**
      * 退出选择模式
      */
     void exitSelectionMode();
-
-    /**
-     * 进入选择模式
-     *
-     * @return
-     */
-     boolean enterSelectionMode();
 
     /**
      * 该控制器接受处理onTouchEvent
@@ -72,23 +45,7 @@ public interface IModelManager {
      */
     boolean onTouchEvent(MotionEvent event);
 
-    void addStrokeReadyListener(IStrokeReadyListener listener);
 
-    void removeStrokeReadyListener(IStrokeReadyListener listener);
-
-    /**
-     * 是否有对象被选中
-     *
-     * @return
-     */
-    boolean hasObjectSelected();
-
-    /**
-     * 获得当前选中的对象。如果没有，则返回null
-     *
-     * @return
-     */
-    InsertableObjectBase getSelectedObject();
 
     /**
      * 如果当前有{@link InsertableObjectBase} object被选中，则释放掉选中状态

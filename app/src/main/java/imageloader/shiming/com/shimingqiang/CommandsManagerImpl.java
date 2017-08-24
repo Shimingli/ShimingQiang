@@ -16,7 +16,6 @@ public class CommandsManagerImpl implements ICommandsManager {
     public static final String TAG = "CommandsManager";
     private Deque<ICommand> mUndoCommands = new LinkedList<ICommand>();
     private Deque<ICommand> mRedoCommands = new LinkedList<ICommand>();
-    // private onDoAvailabilityChangedListener mAvailabilityChangedListener;
     private List<IOnDoAvailabilityChangedListener> mAvailabilityChangedListeners;
     private Handler mHandler = new Handler();
 
@@ -24,14 +23,6 @@ public class CommandsManagerImpl implements ICommandsManager {
         mAvailabilityChangedListeners = new ArrayList<IOnDoAvailabilityChangedListener>();
     }
 
-    // public onDoAvailabilityChangedListener getAvailabilityChangedListener() {
-    // return mAvailabilityChangedListener;
-    // }
-    //
-    // public void setOnAvailabilityChangedListener(
-    // onDoAvailabilityChangedListener mAvailabilityChangedListener) {
-    // this.mAvailabilityChangedListener = mAvailabilityChangedListener;
-    // }
     @Override
     public void addDoAvailabilityChangedListener(
             IOnDoAvailabilityChangedListener listener) {
@@ -173,20 +164,15 @@ public class CommandsManagerImpl implements ICommandsManager {
         }
     }
 
-    public int getUndoCount() {
-        return mUndoCommands.size();
-    }
 
     @Override
     public void disable() {
-        // TODO Auto-generated method stub
         fireUndoAvailabilityChanged(false);
         fireRedoAvailabilityChanged(false);
     }
 
     @Override
     public void enable() {
-        // TODO Auto-generated method stub
         if (!mRedoCommands.isEmpty()) {
             fireRedoAvailabilityChanged(true);
         }

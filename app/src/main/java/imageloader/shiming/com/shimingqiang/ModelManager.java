@@ -138,11 +138,6 @@ public class ModelManager implements IModelManager,
         return true;
     }
 
-    @Override
-    public void addInsertableObject(InsertableObjectBase object) {
-        // TODO Auto-generated method stub
-        addInsertableObject(object, false);
-    }
 
     public void addInsertableObject(InsertableObjectBase object,
                                     boolean fromUndoRedo) {
@@ -165,11 +160,6 @@ public class ModelManager implements IModelManager,
         fireInsertableObjectAdded(list, notifyVisualManager, fromUndoRedo);
     }
 
-    @Override
-    public void removeInsertableObject(InsertableObjectBase object) {
-        // TODO Auto-generated method stub
-        removeInsertableObject(object, false);
-    }
 
     @Override
     public void removeInsertableObject(InsertableObjectBase object,
@@ -184,45 +174,9 @@ public class ModelManager implements IModelManager,
         }
     }
 
-    @Override
-    public void addInsertableObject(List<InsertableObjectBase> list) {
-        // TODO Auto-generated method stub
-        addInsertableObject(list, false);
-    }
 
-    @Override
-    public void addInsertableObject(List<InsertableObjectBase> list,
-                                    boolean fromUndoRedo) {
-        // TODO Auto-generated method stub
-        if (list != null) {
-            if (mInsertableObjects.addAll(list)) {
-                fireInsertableObjectAdded(list, true, fromUndoRedo);
-            }
-        }
-    }
 
-    @Override
-    public void removeInsertableObject(List<InsertableObjectBase> list) {
-        // TODO Auto-generated method stub
-        removeInsertableObject(list, false);
-    }
 
-    @Override
-    public void removeInsertableObject(List<InsertableObjectBase> list,
-                                       boolean fromUndoRedo) {
-        // TODO Auto-generated method stub
-        if (list != null) {
-            if (mInsertableObjects.removeAll(list)) {
-                fireInsertableObjectDeleted(list, fromUndoRedo);
-            }
-        }
-    }
-
-    private void fireStrokeReady(InsertableObjectStroke stroke) {
-        for (IStrokeReadyListener listener : mStrokeReadyListeners) {
-            listener.onStrokeReady(stroke);
-        }
-    }
 
     private void fireInsertableObjectAdded(List<InsertableObjectBase> list,
                                            boolean notifyVisualManager, boolean fromUndoRedo) {
@@ -246,6 +200,7 @@ public class ModelManager implements IModelManager,
         }
     }
 
+    // TODO: 2017/8/24  关键的地方 
     private void fireClear() {
         for (IIsertableObjectListener listener : mIsertableObjectListeners) {
             listener.onClear();
@@ -272,9 +227,7 @@ public class ModelManager implements IModelManager,
         }
     }
 
-    public boolean hasObjectSelected() {
-        return mIsObjectSelected;
-    }
+
 
     public InsertableObjectBase getSelectedObject() {
         if (!mIsObjectSelected) {
@@ -289,24 +242,6 @@ public class ModelManager implements IModelManager,
         mIsertableObjectListeners.add(listener);
     }
 
-    @Override
-    public void removeIsertableObjectListener(IIsertableObjectListener listener) {
-        // TODO Auto-generated method stub
-        mIsertableObjectListeners.remove(listener);
-    }
-
-    @Override
-    public void addSeletedChangedListener(ISelectedChangedListener listener) {
-        // TODO Auto-generated method stub
-        mSeletedListeners.add(listener);
-    }
-
-    @Override
-    public void removeInsertableObjectSeletedListener(
-            ISelectedChangedListener listener) {
-        // TODO Auto-generated method stub
-        mSeletedListeners.remove(listener);
-    }
 
     @Override
     public void addTouchEventListener(ITouchEventListener listener) {
@@ -314,21 +249,6 @@ public class ModelManager implements IModelManager,
         mTouchEventListeners.add(listener);
     }
 
-    @Override
-    public void removeTouchEventListener(ITouchEventListener listener) {
-        // TODO Auto-generated method stub
-        mTouchEventListeners.remove(listener);
-    }
-
-    public void addStrokeReadyListener(IStrokeReadyListener listener) {
-        if (listener != null)
-            mStrokeReadyListeners.add(listener);
-    }
-
-    public void removeStrokeReadyListener(IStrokeReadyListener listener) {
-        if (listener != null)
-            mStrokeReadyListeners.remove(listener);
-    }
 
     /*********************************************************************
      * IModelManager实现结束
@@ -347,21 +267,6 @@ public class ModelManager implements IModelManager,
         fireClear();
     }
 
-    @Override
-    public void clearStokes() {
-        // TODO Auto-generated method stub
-        List<InsertableObjectBase> removedList = new ArrayList<InsertableObjectBase>();
-        for (InsertableObjectBase insertableObjectBase : mInsertableObjects) {
-            if (insertableObjectBase instanceof InsertableObjectStroke
-                    ) {
-                removedList.add(insertableObjectBase);
-            }
-        }
-        for (InsertableObjectBase insertableObjectBase : removedList) {
-            mInsertableObjects.remove(insertableObjectBase);
-        }
-        fireClearStrokes();
-    }
 
     /*********************************************************
      * LongClickDetector.OnLongClickListener实现开始
@@ -390,99 +295,9 @@ public class ModelManager implements IModelManager,
                     mActingInsertableObject);
             mIInternalDoodle.insertOperation(operation);
             fireSelected(object);
-            showSelectView();
         }
     }
 
-    private void showSelectView() {
-//        mSelectView = SelectViewFactory.createSelectView(mIInternalDoodle
-//                        .getDoodleView().getContext(),
-//                mIInternalDoodle.getDoodleView(), mActingInsertableObject);
-//        mSelectView.setOnDeleteListener(new IClickedListener() {
-//
-//            @Override
-//            public void onClicked() {
-//                // TODO Auto-generated method stub
-//                dismissSelectView();
-//                if (mActingInsertableObject != null)
-//                    removeInsertableObject(mActingInsertableObject);
-//                InsertableObjectBase temp = mActingInsertableObject;
-//                mActingInsertableObject = null;
-//                fireUnSelected(temp);
-//            }
-//        });
-//        mSelectView.setTransformChangedListener(new ITransformChanged() {
-//
-//            @Override
-//            public void onScaled(Matrix matrix) {
-//                // TODO Auto-generated method stub
-//                if (mActingInsertableObject != null) {
-//                    ITransformChangedListener listener = mActingInsertableObject
-//                            .createTransformChangedListener();
-//                    if (listener != null) {
-//                        listener.onScaled(mActingInsertableObject, matrix);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onTranslate(Matrix matrix) {
-//                // TODO Auto-generated method stub
-//                if (mActingInsertableObject != null) {
-//                    ITransformChangedListener listener = mActingInsertableObject
-//                            .createTransformChangedListener();
-//                    if (listener != null) {
-//                        listener.onTranslate(mActingInsertableObject, matrix);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onRotate(Matrix matrix) {
-//                // TODO Auto-generated method stub
-//                if (mActingInsertableObject != null) {
-//                    ITransformChangedListener listener = mActingInsertableObject
-//                            .createTransformChangedListener();
-//                    if (listener != null) {
-//                        listener.onRotate(mActingInsertableObject, matrix);
-//                    }
-//                }
-//            }
-//
-//            private Matrix mRecordMatrix = null;
-//
-//            @Override
-//            public void onAction(SelectViewEnum.ActionType t, ILayer layer) {
-//                // TODO Auto-generated method stub
-//                if (t == SelectViewEnum.ActionType.begin && mActingInsertableObject != null) {
-//                    mRecordMatrix = new Matrix(mActingInsertableObject
-//                            .getMatrix());
-//                }
-//                if (t == SelectViewEnum.ActionType.end && mActingInsertableObject != null) {
-//                    if (mActingInsertableObject instanceof InsertableBitmap
-//                            && mRecordMatrix != null) {
-//                        TransformEndOperation operation = new TransformEndOperation(
-//                                mIInternalDoodle.getFrameCache(),
-//                                mIInternalDoodle.getModelManager(),
-//                                mIInternalDoodle.getVisualManager(),
-//                                mActingInsertableObject, mRecordMatrix);
-//                        mIInternalDoodle.insertOperation(operation);
-//                    }
-//                }
-//            }
-//        });
-//        mSelectView
-//                .setUnSelectedListener(new IObjectUnSelectedListener<InsertableObjectBase>() {
-//
-//                    @Override
-//                    public void objectUnSelected(InsertableObjectBase o) {
-//                        // TODO Auto-generated method stub
-//                        dismissSelectView();
-//                        unSelected();
-//                    }
-//                });
-//        mSelectView.showSelectView();
-    }
 
     public void unSelected() {
         InsertableObjectBase temp = mActingInsertableObject;
@@ -543,29 +358,4 @@ public class ModelManager implements IModelManager,
         }
     }
 
-    @Override
-    public boolean enterSelectionMode() {
-        if (mIInternalDoodle.getSelectionMode() == DoodleEnum.SelectionMode.SELECTION)
-            return true;
-        if (mActingInsertableObject == null)// 重要判断
-            return false;
-        if (!mActingInsertableObject.isSelectable())
-            return false;
-        final InsertableObjectBase temp = mActingInsertableObject;
-        /**
-         * 比如从Gallery添加图片的时候，这里会先insert一个SelectedDrawAllOperation，
-         * 然后doodleview，insert一个DrawAllOperation。
-         * 这样的插入顺序会导致显示不正常。强制延迟50ms，使得DrawAllOperation先插入
-         * ，SelectedDrawAllOperation后插入
-         */
-        mHandler.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                onSelectView(temp);
-            }
-        }, 50);
-        return true;
-    }
 }

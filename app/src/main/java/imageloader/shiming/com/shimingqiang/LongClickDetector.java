@@ -56,10 +56,6 @@ public class LongClickDetector {
         mLongClickListeners.add(listener);
     }
 
-    public void removeLongClickListener(OnLongClickListener listener) {
-        if (mLongClickListeners.contains(listener))
-            mLongClickListeners.remove(listener);
-    }
 
     private class CountDown extends CountDownTimer {
         public CountDown(long millisInFuture, long countDownInterval) {
