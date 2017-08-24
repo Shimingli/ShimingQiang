@@ -2,7 +2,6 @@ package imageloader.shiming.com.shimingqiang;
 
 import android.graphics.Matrix;
 import android.graphics.RectF;
-import android.os.Handler;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ public class ModelManager implements IModelManager,
     private List<ISelectedChangedListener> mSeletedListeners;
     private List<IIsertableObjectListener> mIsertableObjectListeners;
     private List<ITouchEventListener> mTouchEventListeners;
-    private List<IStrokeReadyListener> mStrokeReadyListeners;
     private IInternalDoodle mIInternalDoodle;
 
     private LongClickDetector mLongClickDetector = null;
@@ -42,11 +40,9 @@ public class ModelManager implements IModelManager,
 
     private ISelectView<InsertableObjectBase> mSelectView;
 
-    private Handler mHandler = new Handler();
 
     private boolean mIsObjectSelected = false;
 
-    // private ISelectView<InsertableObjectBase> mSelectView;
 
     public ModelManager(IInternalDoodle internalDoodle) {
         mIInternalDoodle = internalDoodle;
@@ -54,20 +50,12 @@ public class ModelManager implements IModelManager,
         mSeletedListeners = new ArrayList<ISelectedChangedListener>();
         mIsertableObjectListeners = new ArrayList<IIsertableObjectListener>();
         mTouchEventListeners = new ArrayList<ITouchEventListener>();
-        mStrokeReadyListeners = new ArrayList<IStrokeReadyListener>();
+
 
         mLongClickDetector = new LongClickDetector();
         mLongClickDetector.addLongClickListener(this);
     }
 
-    /*********************************************************************
-     * IModelManager实现开始
-     *********************************************************************/
-    // @Override
-    // public InsertableObjectBase getActingInsertableObject() {
-    // // TODO Auto-generated method stub
-    // return mActingInsertableObject;
-    // }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -92,7 +80,6 @@ public class ModelManager implements IModelManager,
                 InsertableObjectStroke stroke = InsertableObjectStroke
                         .newInsertableObjectStroke(strokeType);
                 mActingInsertableObject = stroke;
-                // addInsertableObject(stroke);
                 break;
             default:
                 break;
@@ -207,11 +194,6 @@ public class ModelManager implements IModelManager,
         }
     }
 
-    private void fireClearStrokes() {
-        for (IIsertableObjectListener listener : mIsertableObjectListeners) {
-            listener.onClearStrokes();
-        }
-    }
 
     private void fireSelected(InsertableObjectBase insertableObject) {
         mIsObjectSelected = true;
@@ -228,13 +210,6 @@ public class ModelManager implements IModelManager,
     }
 
 
-
-    public InsertableObjectBase getSelectedObject() {
-        if (!mIsObjectSelected) {
-            return null;
-        }
-        return mActingInsertableObject;
-    }
 
     @Override
     public void addIsertableObjectListener(IIsertableObjectListener listener) {

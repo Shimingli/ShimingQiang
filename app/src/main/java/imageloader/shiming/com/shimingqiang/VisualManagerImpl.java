@@ -212,9 +212,4 @@ public class VisualManagerImpl implements IVisualManager,
         return visualElement.onTouchEvent(event);
     }
 
-    @Override
-    public void onRecognizeAdd() {
-        // TODO Auto-generated method stub
-
-    }
 }

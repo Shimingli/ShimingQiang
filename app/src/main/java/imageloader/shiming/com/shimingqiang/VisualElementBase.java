@@ -75,27 +75,7 @@ public abstract class VisualElementBase implements
 
     }
 
-    @Override
-    public void onExtraPropertyValueAdded(InsertableObjectBase insertableObjec,
-                                          String key, boolean fromUndoRedo) {
-        // TODO Auto-generated method stub
 
-    }
-
-    @Override
-    public void onExtraPropertyValueDeleted(
-            InsertableObjectBase insertableObjec, String key,
-            boolean fromUndoRedo) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void onExtraPropertyValueChanged(
-            InsertableObjectBase insertableObjec, String key, Object oldValue,
-            Object newValue, boolean fromUndoRedo) {
-        // TODO Auto-generated method stub
-    }
 
     /**********************************************
      * IPropertyValueChangedListener结束

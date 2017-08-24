@@ -46,7 +46,7 @@ public class InsertableObjectStroke extends InsertableObjectBase {
 
     public static final int PROPERTY_ID_STROKE_WIDTH = 101;
     public static final int PROPERTY_ID_STROKE_COLOR = 102;
-    public static final int PROPERTY_ID_STROKE_ALPHA = 103;
+
     /**
      * 画笔类型
      */

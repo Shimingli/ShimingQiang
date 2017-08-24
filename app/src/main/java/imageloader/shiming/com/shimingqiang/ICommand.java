@@ -8,14 +8,5 @@ package imageloader.shiming.com.shimingqiang;
  * 定义ICommand接口，DoodleView的undo，redo功能由ICommand完成
  */
 public interface ICommand {
-    /**
-     * 返回该Command对应的可插入对象
-     *
-     * @return
-     */
-    InsertableObjectBase getInsertObject();
 
-    void undo();
-
-    void redo();
 }

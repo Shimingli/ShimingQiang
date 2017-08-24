@@ -7,10 +7,7 @@ package imageloader.shiming.com.shimingqiang;
  * Email zhoudeheng@qccr.com
  */
 public interface ISelectView<T> {
-    void setUnSelectedListener(IObjectUnSelectedListener<T> listener);
-    void setOnDeleteListener(IClickedListener listener);
-    void setTransformChangedListener(ITransformChanged changed);
-    void showSelectView();
+
     void dismissSelectView();
     boolean isSelectViewShowing();
 }

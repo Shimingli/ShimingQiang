@@ -9,15 +9,4 @@ public  interface IPropertyValueChangedListener {
              InsertableObjectBase insertableObject, int propertyId,
              Object oldValue, Object newValue, boolean fromUndoRedo);
 
-     void onExtraPropertyValueAdded(
-             InsertableObjectBase insertableObjec, String key,
-             boolean fromUndoRedo);
-
-     void onExtraPropertyValueDeleted(
-             InsertableObjectBase insertableObjec, String key,
-             boolean fromUndoRedo);
-
-     void onExtraPropertyValueChanged(
-             InsertableObjectBase insertableObjec, String key,
-             Object oldValue, Object newValue, boolean fromUndoRedo);
 }

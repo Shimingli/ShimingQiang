@@ -141,40 +141,5 @@ public class SegmentStrokeTouchOperation extends StrokeTouchOperation {
         }
     }
 
-    // /**
-    // * 分段画笔策略:up之后采用
-    // *
-    // * @author noah
-    // *
-    // */
-    // class SegmentUpDrawStrategy extends DrawStrategy {
-    // protected FrameCache mSegmentFrameCache;
-    //
-    // public SegmentUpDrawStrategy(Canvas canvas, FrameCache frameCache,
-    // VisualElementBase visualElement, FrameCache segmentFrameCache) {
-    // super(canvas, frameCache, visualElement);
-    // // TODO Auto-generated constructor stub
-    // mSegmentFrameCache = segmentFrameCache;
-    // }
-    //
-    // @Override
-    // public void draw() {
-    // // TODO Auto-generated method stub
-    // updateCache();
-    // drawCache();
-    // }
-    //
-    // @Override
-    // protected void updateCache() {
-    // // TODO Auto-generated method stub
-    // if (mViewCanvas != null && mSegmentFrameCache != null
-    // && mSegmentFrameCache.getBitmap() != null) {//
-    // 第一次绘制的时候，mFrameCache.getBitmap()有可能为null
-    // drawBitmap(mFrameCache.getCanvas(),
-    // mSegmentFrameCache.getBitmap());
-    // }
-    // }
-    //
-    // }
 
 }

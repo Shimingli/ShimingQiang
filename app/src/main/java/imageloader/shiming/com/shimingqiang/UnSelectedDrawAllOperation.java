@@ -17,7 +17,7 @@ public class UnSelectedDrawAllOperation extends DrawAllOperation {
                                       InsertableObjectBase insertableObject, Matrix undoMatrix,
                                       Matrix redoMatrix) {
         super(frameCache, modelManager, visualManager);
-        // TODO Auto-generated constructor stub
+
         mInsertableObject = insertableObject;
         mUndoMatrix = undoMatrix;
         mRedoMatrix = redoMatrix;
@@ -25,13 +25,7 @@ public class UnSelectedDrawAllOperation extends DrawAllOperation {
 
     @Override
     public ICommand onCreateCommand() {
-        // TODO Auto-generated method stub
-        // if (mUndoMatrix == null || mRedoMatrix == null)
-        // return null;
-        // if (mUndoMatrix.equals(mRedoMatrix))
-        // return null;
-        // return new UnSelectedCommand(mInsertableObject, mUndoMatrix,
-        // mRedoMatrix);
+
         return null;
     }
 }

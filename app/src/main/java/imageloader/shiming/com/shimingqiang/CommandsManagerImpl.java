@@ -23,57 +23,8 @@ public class CommandsManagerImpl implements ICommandsManager {
         mAvailabilityChangedListeners = new ArrayList<IOnDoAvailabilityChangedListener>();
     }
 
-    @Override
-    public void addDoAvailabilityChangedListener(
-            IOnDoAvailabilityChangedListener listener) {
-        mAvailabilityChangedListeners.add(listener);
-    }
 
-    @Override
-    public void removeDoAvailabilityChangedListener(
-            IOnDoAvailabilityChangedListener listener) {
-        mAvailabilityChangedListeners.remove(listener);
-    }
 
-    /**
-     * 获得最后一个undo命令;如果没有，则返回null
-     *
-     * @return
-     */
-    @Override
-    public ICommand removeUndo() {
-        synchronized (mUndoCommands) {
-            ICommand command = null;
-            if (!mUndoCommands.isEmpty()) {
-                command = mUndoCommands.removeLast();
-                if (mUndoCommands.isEmpty()) {
-                    fireUndoAvailabilityChanged(false);
-                }
-                addRedo(command);
-            }
-            return command;
-        }
-    }
-
-    /**
-     * 获得最后一个redo命令;如果没有，则返回null
-     *
-     * @return
-     */
-    @Override
-    public ICommand removeRedo() {
-        synchronized (mRedoCommands) {
-            ICommand command = null;
-            if (!mRedoCommands.isEmpty()) {
-                command = mRedoCommands.removeLast();
-                if (mRedoCommands.isEmpty()) {
-                    fireRedoAvailabilityChanged(false);
-                }
-                addUndo(command, true);
-            }
-            return command;
-        }
-    }
 
     /**
      *
@@ -165,20 +116,5 @@ public class CommandsManagerImpl implements ICommandsManager {
     }
 
 
-    @Override
-    public void disable() {
-        fireUndoAvailabilityChanged(false);
-        fireRedoAvailabilityChanged(false);
-    }
-
-    @Override
-    public void enable() {
-        if (!mRedoCommands.isEmpty()) {
-            fireRedoAvailabilityChanged(true);
-        }
-        if (!mUndoCommands.isEmpty()) {
-            fireUndoAvailabilityChanged(true);
-        }
-    }
 
 }

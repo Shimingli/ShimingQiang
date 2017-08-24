@@ -19,22 +19,13 @@ public abstract class InsertableObjectBase {
      */
     public static final int TYPE_NONE = 0;
     public static final int TYPE_STROKE = 1;// 画笔
-
-    /**
-     * 定义缩放的方式
-     */
-    public static final int SCALE_TYPE_NO = 0;// 不支持缩放
-
     public static final int PROPERTY_ID_DRAWNRECTF = 2;
-    public static final int PROPERTY_ID_MATRIX = 3;
     protected int mType = TYPE_NONE;
 
     protected RectF mInitRectF;// 绘制区域;记录初始位置。该变量只应该记录初始位置
 
     // protected float mRotationAngle = 0;// 选中角度
     protected Matrix mMatrix = new Matrix();// 矩形变换。旋转，平移，缩放，都是通过这个矩阵来实现
-
-    protected boolean mMoveable = true;
 
 
     protected HashMap<String, Object> mExtraProperties;
@@ -127,12 +118,6 @@ public abstract class InsertableObjectBase {
         return true;
     }
 
-    /**
-     * 获得该对象对应的Property Config
-     *
-     * @return
-     */
-    public abstract PropertyConfigBase getPropertyConfig();
 
     /**
      * 获得变换后的RectF

@@ -19,5 +19,5 @@ public interface IIsertableObjectListener {
 
     void onClearStrokes();
 
-    void onRecognizeAdd();
+
 }

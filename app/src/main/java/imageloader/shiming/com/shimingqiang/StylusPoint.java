@@ -10,9 +10,6 @@ public class StylusPoint {
     public float y;
     public float pressure = 1.0f;//压力值
 
-    public StylusPoint() {
-        this(0, 0, 1.0f);
-    }
 
     public StylusPoint(float x, float y) {
         this.x = x;
@@ -24,12 +21,6 @@ public class StylusPoint {
         this.x = x;
         this.y = y;
         this.pressure = pressure;
-    }
-
-    public StylusPoint(StylusPoint point) {
-        x = point.x;
-        y = point.y;
-        pressure = point.pressure;
     }
 
     /**

@@ -40,19 +40,12 @@ public class HWPoint {
         this.width = point.width;
     }
 
-    public void Set(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
 
     public String toString() {
         String str = "X = " + x + "; Y = " + y + "; W = " + width;
         return str;
     }
 
-    // public Point ToPoint() {
-    // return new Point(x,y);
-    // }
 
     public StylusPoint ToStylusPoint() {
         return new StylusPoint(x, y, pressure);

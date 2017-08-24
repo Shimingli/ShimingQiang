@@ -25,23 +25,6 @@ public class AddedCommand implements ICommand {
         mModelManager = modelManager;
     }
 
-    @Override
-    public void undo() {
-        // TODO Auto-generated method stub
-        mModelManager.removeInsertableObject(mInsertableObject, true);
-    }
 
-    @Override
-    public void redo() {
-        // TODO Auto-generated method stub
-        mModelManager.addInsertableObject(mInsertableObject, true);
-        // mDrawStrokeOperation.draw();
-    }
-
-    @Override
-    public InsertableObjectBase getInsertObject() {
-        // TODO Auto-generated method stub
-        return mInsertableObject;
-    }
 
 }

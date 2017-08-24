@@ -22,43 +22,18 @@ public abstract class DrawStrategy {
     }
     protected Canvas mViewCanvas;
     protected FrameCache mFrameCache;
-    // protected DrawTool mDrawTool;
+
     protected VisualElementBase mVisualElement;
 
-    // /**
-    // * 绘制笔画的画笔
-    // */
-    // protected Paint mPaint;
 
-    /**
-     * 绘制的主过程。包括刷新view，以及更新缓存
-     *
-     * @param canvas
-     *            :view所在的canvas
-     * @param frameCache
-     */
-    // public DrawStrategy(Canvas canvas, FrameCache frameCache, DrawTool
-    // drawInfo) {
-    // mViewCanvas = canvas;
-    // mFrameCache = frameCache;
-    // mDrawTool = drawInfo;
-    // // mPaint = paint;
-    // }
     public DrawStrategy(Canvas canvas, FrameCache frameCache,
                         VisualElementBase visualElement) {
         mViewCanvas = canvas;
         mFrameCache = frameCache;
         mVisualElement = visualElement;
-        // mPaint = paint;
+
     }
 
-    /**
-     * 绘制的主过程。包括刷新view，以及更新缓存。
-     *
-     * @param canvas
-     *            :view所在的canvas
-     * @param frameCache
-     */
     public abstract void draw();
 
     /**
@@ -88,19 +63,6 @@ public abstract class DrawStrategy {
         canvas.drawBitmap(bitmap, 0, 0, sBitmapPaint);
     }
 
-    // /**
-    // * 调用VisualElementBase.drawSegment进行绘制
-    // *
-    // * @param canvas
-    // * @param visualElement
-    // */
-    // protected void drawSegmentVisualElement(Canvas canvas,
-    // VisualElementBase visualElement) {
-    // // drawTool.getDrawTool().draw(canvas, false, drawTool);
-    // // drawTool.resetDirty();
-    // visualElement.drawSegment(canvas);
-    //
-    // }
 
     /**
      * 调用visualElement.draw进行绘制
@@ -110,8 +72,6 @@ public abstract class DrawStrategy {
      */
     protected void drawWholeVisualElement(Canvas canvas,
                                           VisualElementBase visualElement) {
-        // drawTool.getDrawTool().draw(canvas, false, drawTool);
-        // drawTool.resetDirty();
         visualElement.draw(canvas);
     }
 }
