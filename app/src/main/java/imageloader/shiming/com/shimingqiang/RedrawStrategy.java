@@ -28,8 +28,7 @@ public class RedrawStrategy extends DrawStrategy {
 
     @Override
     public void draw() {
-        // TODO Auto-generated method stub
-        // mViewCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+
         updateCache();
         drawCache();
     }

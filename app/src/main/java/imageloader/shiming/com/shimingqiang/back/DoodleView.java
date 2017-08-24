@@ -1,4 +1,4 @@
-package imageloader.shiming.com.shimingqiang;
+package imageloader.shiming.com.shimingqiang.back;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,6 +22,25 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+
+import imageloader.shiming.com.shimingqiang.CommandsManagerImpl;
+import imageloader.shiming.com.shimingqiang.DoodleEnum;
+import imageloader.shiming.com.shimingqiang.DoodleOperation;
+import imageloader.shiming.com.shimingqiang.ErrorUtil;
+import imageloader.shiming.com.shimingqiang.FrameCache;
+import imageloader.shiming.com.shimingqiang.ICommand;
+import imageloader.shiming.com.shimingqiang.ICommandsManager;
+import imageloader.shiming.com.shimingqiang.IInternalDoodle;
+import imageloader.shiming.com.shimingqiang.IModelManager;
+import imageloader.shiming.com.shimingqiang.IVisualManager;
+import imageloader.shiming.com.shimingqiang.InsertableObjectBase;
+import imageloader.shiming.com.shimingqiang.InsertableObjectStroke;
+import imageloader.shiming.com.shimingqiang.ModelManager;
+import imageloader.shiming.com.shimingqiang.PropertyConfigStrokeUtils;
+import imageloader.shiming.com.shimingqiang.RedrawStrategy;
+import imageloader.shiming.com.shimingqiang.StrokeTouchOperation;
+import imageloader.shiming.com.shimingqiang.VisualManagerImpl;
+import imageloader.shiming.com.shimingqiang.VisualStrokeBase;
 
 
 /**
@@ -119,19 +138,7 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width,
                                    int height) {
-            if (mFrameCache != null) {
-                mFrameCache.recycle();
-                mFrameCache = null;
-            }
-            mFrameCache = new FrameCache(getWidth(), getHeight());
-            if (mTempFrameCache != null) {
-                mTempFrameCache.recycle();
-                mTempFrameCache = null;
-            }
-            resetSegmentFrameCache();
-            DrawAllOperation operation = new DrawAllOperation(mFrameCache,
-                    mModelManager, mVisualManager);
-            insertOperation(operation);// 第一次重绘所有的
+
         }
     };
 
@@ -156,7 +163,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
      * @author noah
      */
     class DrawThread extends Thread {
-        // private DrawStatus mDrawStatus;
         /**
          * 每一次,从mDrawBlockingQueue中取所有的DrawStatus,放入mDrawStatusList
          */
@@ -330,7 +336,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
         mModelManager.exitSelectionMode();
         //删除的方法最为关键
         mModelManager.clear();
-
         mCommandsManager.clear();
 
 
@@ -425,13 +430,11 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
      ********************************************/
     @Override
     public IModelManager getModelManager() {
-        // TODO Auto-generated method stub
         return mModelManager;
     }
 
     @Override
     public IVisualManager getVisualManager() {
-        // TODO Auto-generated method stub
         return mVisualManager;
     }
 
@@ -443,7 +446,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
 
     @Override
     public FrameCache getFrameCache() {
-        // TODO Auto-generated method stub
         return mFrameCache;
     }
 

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import imageloader.shiming.com.shimingqiang.back.DoodleView;
+
 public class MainActivity extends AppCompatActivity {
 
     private DoodleView mDoodleView;

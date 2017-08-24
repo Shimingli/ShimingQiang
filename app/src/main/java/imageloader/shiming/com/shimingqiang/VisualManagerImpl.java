@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.MotionEvent;
 
 import java.lang.ref.SoftReference;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -164,36 +163,7 @@ public class VisualManagerImpl implements IVisualManager,
 
     @Override
     public void onClearStrokes() {
-        // TODO Auto-generated method stub
-        DrawAllOperation drawAllOperation = new DrawAllOperation(
-                mInternalDoodle.getFrameCache(),
-                mInternalDoodle.getModelManager(),
-                mInternalDoodle.getVisualManager());
-        mInternalDoodle.insertOperation(drawAllOperation);
 
-        List<InsertableObjectBase> list = new ArrayList<InsertableObjectBase>(
-                mInternalDoodle.getModelManager().getInsertableObjectList());
-        List<InsertableObjectBase> removedList = new ArrayList<InsertableObjectBase>();
-        for (InsertableObjectBase insertableObject : mHardInsertObjectCache
-                .keySet()) {
-            if (!list.contains(insertableObject)) {
-                removedList.add(insertableObject);
-            }
-        }
-        for (InsertableObjectBase insertableObject : removedList) {
-            mHardInsertObjectCache.remove(insertableObject);
-        }
-
-        removedList.clear();
-        for (InsertableObjectBase insertableObject : mSoftInsertObjectCache
-                .keySet()) {
-            if (!list.contains(insertableObject)) {
-                removedList.add(insertableObject);
-            }
-        }
-        for (InsertableObjectBase insertableObject : removedList) {
-            mSoftInsertObjectCache.remove(insertableObject);
-        }
     }
 
     /**********************************************************************
