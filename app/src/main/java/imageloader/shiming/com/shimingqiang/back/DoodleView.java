@@ -23,13 +23,9 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import imageloader.shiming.com.shimingqiang.CommandsManagerImpl;
-import imageloader.shiming.com.shimingqiang.DoodleEnum;
 import imageloader.shiming.com.shimingqiang.DoodleOperation;
 import imageloader.shiming.com.shimingqiang.ErrorUtil;
 import imageloader.shiming.com.shimingqiang.FrameCache;
-import imageloader.shiming.com.shimingqiang.ICommand;
-import imageloader.shiming.com.shimingqiang.ICommandsManager;
 import imageloader.shiming.com.shimingqiang.IInternalDoodle;
 import imageloader.shiming.com.shimingqiang.IModelManager;
 import imageloader.shiming.com.shimingqiang.IVisualManager;
@@ -55,8 +51,6 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
     private Handler mHandler = new Handler();
     private SurfaceHolder mSurfaceHolder;
     private DrawThread mDrawThread;
-    private ICommandsManager mCommandsManager = new CommandsManagerImpl();
-
     /*
      * 一个阻塞队列，生产者为UI线程，消费者为DrawThread线程。
      * 该LinkedBlockingDeque的容量为无限大，故Ui线程永远不会被阻塞
@@ -239,10 +233,7 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
                     }
                 }
             }
-            ICommand command = doodleOperation.createCommand();
-            if (command != null) {
-                mCommandsManager.addUndo(command);
-            }
+
         }
 
         protected void fetchData() {
@@ -333,10 +324,9 @@ public class DoodleView extends SurfaceView implements IInternalDoodle {
      * 清空所有(包括图片等)。该操作不可逆
      */
     public void clear() {
-        mModelManager.exitSelectionMode();
         //删除的方法最为关键
         mModelManager.clear();
-        mCommandsManager.clear();
+
 
 
     }

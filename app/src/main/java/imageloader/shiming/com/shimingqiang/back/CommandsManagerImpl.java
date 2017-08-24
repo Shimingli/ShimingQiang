@@ -1,4 +1,4 @@
-package imageloader.shiming.com.shimingqiang;
+package imageloader.shiming.com.shimingqiang.back;
 
 import android.os.Handler;
 
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+
+import imageloader.shiming.com.shimingqiang.IOnDoAvailabilityChangedListener;
 
 
 /**
@@ -47,25 +49,6 @@ public class CommandsManagerImpl implements ICommandsManager {
         }
     }
 
-    /**
-     * 插入一个undo命令
-     *
-     * @return
-     */
-    @Override
-    public void addUndo(ICommand command) {
-        addUndo(command, false);
-    }
-
-    protected void addRedo(ICommand command) {
-        synchronized (mRedoCommands) {
-            boolean isEmpty = mRedoCommands.isEmpty();
-            mRedoCommands.addLast(command);
-            if (isEmpty) {
-                fireRedoAvailabilityChanged(true);
-            }
-        }
-    }
 
     protected void fireRedoAvailabilityChanged(final boolean available) {
         for (IOnDoAvailabilityChangedListener listener : mAvailabilityChangedListeners) {

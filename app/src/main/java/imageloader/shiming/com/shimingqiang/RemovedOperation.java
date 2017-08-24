@@ -1,7 +1,6 @@
 package imageloader.shiming.com.shimingqiang;
 
 
-
 /**
  * Created by $ zhoudeheng on 2015/12/8.
  * Email zhoudeheng@qccr.com
@@ -16,11 +15,6 @@ public class RemovedOperation extends DrawAllOperation {
         mRemovedObject = removedObject;
     }
 
-    @Override
-    public ICommand onCreateCommand() {
-        // TODO Auto-generated method stub
-        return new RemovedCommand(mRemovedObject, mModelManager);
-        // return null;
-    }
+
 
 }

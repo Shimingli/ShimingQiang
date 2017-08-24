@@ -29,10 +29,6 @@ public class StrokeTouchOperation extends DoodleOperation {
         mVisualStroke = (VisualStrokeBase) visualElement;
     }
 
-    public MotionEvent getMotionEvent() {
-        return mMotionEvent;
-    }
-
     public void setMotionEvent(MotionEvent mMotionEvent) {
         this.mMotionEvent = mMotionEvent;
     }
@@ -54,16 +50,6 @@ public class StrokeTouchOperation extends DoodleOperation {
             drawStrategy = new EditDrawStrategy(canvas, frameCache, mVisualStroke);
         }
         return drawStrategy;
-    }
-
-    @Override
-    public ICommand onCreateCommand() {
-        // TODO Auto-generated method stub
-        ICommand command = null;
-        if (mMotionEvent.getActionMasked() == MotionEvent.ACTION_UP) {
-            command = new AddedCommand(mStroke, mModelManager);
-        }
-        return command;
     }
 
     @Override

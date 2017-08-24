@@ -77,13 +77,6 @@ public class SegmentStrokeTouchOperation extends StrokeTouchOperation {
 
     @Override
     public Rect computerDirty() {
-        // if (mVisualSpot == null)
-        // return null;
-        // Rect rect = null;
-        // rect = mVisualSpot.getDirtyRect();
-        //
-        // return rect;
-        // 如果返回getDirtyRect，绘制的时候，会出现不连续的情况
         return null;
     }
 

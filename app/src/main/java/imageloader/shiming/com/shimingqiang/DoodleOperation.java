@@ -3,6 +3,8 @@ package imageloader.shiming.com.shimingqiang;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
+import imageloader.shiming.com.shimingqiang.back.ICommand;
+
 
 /**
  * Created by $ zhoudeheng on 2015/12/8.
@@ -47,20 +49,6 @@ public abstract class DoodleOperation {
      */
     public abstract Rect computerDirty();
 
-
-    public abstract ICommand onCreateCommand();
-
-    /**
-     * 创建该DoodleOperation的ICommand。并不是所有的DoodleOperation都需要返回command，不需要的就返回null
-     * 该方法会首先判断{@link DoodleOperation#setCreatingCommand(boolean)}
-     * 方法穿过来的值，如果值为false,则直接返回null, 否则返回
-     * {@link DoodleOperation#onCreateCommand()} 的返回值
-     */
-    public ICommand createCommand() {
-        if (!mIsCreatingCommand)
-            return null;
-        return onCreateCommand();
-    }
 
 
     /**

@@ -133,21 +133,6 @@ public class VisualManagerImpl implements IVisualManager,
         }
     }
 
-    @Override
-    public void onRemoved(List<InsertableObjectBase> list, boolean fromUndoRedo) {
-        // TODO Auto-generated method stub
-        // 有对象被删除的时候，重绘一下
-        for (InsertableObjectBase insertableObjectBase : list) {
-            DoodleOperation operation = getVisualElement(insertableObjectBase)
-                    .createdRemovedOperation();
-            if (operation != null) {
-                operation.setCreatingCommand(!fromUndoRedo);
-                mInternalDoodle.insertOperation(operation);
-            }
-            removeFromHardCache(insertableObjectBase);
-        }
-
-    }
 
     @Override
     public void onClear() {
@@ -161,10 +146,6 @@ public class VisualManagerImpl implements IVisualManager,
         mSoftInsertObjectCache.clear();
     }
 
-    @Override
-    public void onClearStrokes() {
-
-    }
 
     /**********************************************************************
      * IIsertableObjectListener实现结束

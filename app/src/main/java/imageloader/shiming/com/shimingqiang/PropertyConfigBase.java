@@ -14,8 +14,5 @@ public class PropertyConfigBase {
         mExtraProperties = new HashMap<String, Object>();
     }
 
-    public HashMap<String, Object> getExtraProperties() {
-        return mExtraProperties;
-    }
 
 }

@@ -1,5 +1,4 @@
-package imageloader.shiming.com.shimingqiang;
-
+package imageloader.shiming.com.shimingqiang.back;
 
 
 /**
@@ -10,7 +9,6 @@ package imageloader.shiming.com.shimingqiang;
  */
 public interface ICommandsManager {
 
-    void addUndo(ICommand command);
 
     void clear();
 

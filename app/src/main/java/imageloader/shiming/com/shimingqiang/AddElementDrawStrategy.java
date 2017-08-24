@@ -14,23 +14,17 @@ public class AddElementDrawStrategy extends DrawStrategy {
     public AddElementDrawStrategy(Canvas canvas, FrameCache frameCache,
                                   VisualElementBase visualElement) {
         super(canvas, frameCache, visualElement);
-        // TODO Auto-generated constructor stub
     }
 
     @Override
     public void draw() {
-        // TODO Auto-generated method stub
-        // drawCache();
-        // drawView();
-        // updateCache();
-        // mViewCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+
         updateCache();
         drawCache();
     }
 
     @Override
     protected void updateCache() {
-        // TODO Auto-generated method stub
         if (mFrameCache == null)
             return;
         Canvas canvas = mFrameCache.getCanvas();

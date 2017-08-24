@@ -23,10 +23,5 @@ public class UnSelectedDrawAllOperation extends DrawAllOperation {
         mRedoMatrix = redoMatrix;
     }
 
-    @Override
-    public ICommand onCreateCommand() {
-
-        return null;
-    }
 }
 

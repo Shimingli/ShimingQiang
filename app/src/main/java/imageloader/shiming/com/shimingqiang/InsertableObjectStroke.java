@@ -150,10 +150,6 @@ public class InsertableObjectStroke extends InsertableObjectBase {
         this.mPoints = mPoints;
     }
 
-    public PropertyConfigBase getPropertyConfig() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     public static boolean isSupported(int type) {
         return type >= STROKE_TYPE_ERASER && type <= STROKE_TYPE_AIRBRUSH;
@@ -180,9 +176,4 @@ public class InsertableObjectStroke extends InsertableObjectBase {
         return stroke;
     }
 
-    @Override
-    public boolean isSelectable() {
-        // TODO Auto-generated method stub
-        return false;
-    }
 }

@@ -1,4 +1,4 @@
-package imageloader.shiming.com.shimingqiang;
+package imageloader.shiming.com.shimingqiang.back;
 
 /**
  * Created by $ zhoudeheng on 2015/12/8.

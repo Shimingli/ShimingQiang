@@ -19,16 +19,10 @@ public class DrawAllOperation extends DoodleOperation {
     @Override
     protected void onDraw(Canvas canvas) {
         // TODO Auto-generated method stub
-        RedrawStrategy drawStrategy = new RedrawStrategy(canvas, mFrameCache,
-                null, mModelManager.getInsertableObjectList(), mVisualManager);
+        RedrawStrategy drawStrategy = new RedrawStrategy(canvas, mFrameCache,null, mModelManager.getInsertableObjectList(), mVisualManager);
         drawStrategy.draw();
     }
 
-    @Override
-    public ICommand onCreateCommand() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
     public Rect computerDirty() {

@@ -7,6 +7,6 @@ package imageloader.shiming.com.shimingqiang;
  * 有对象被选中,或选中结束时候的回调
  */
 public interface ISelectedChangedListener {
-    void onSelected(InsertableObjectBase insertableObject);
+
     void onUnSelected(InsertableObjectBase insertableObject);
 }

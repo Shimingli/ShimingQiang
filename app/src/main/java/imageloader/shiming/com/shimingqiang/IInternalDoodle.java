@@ -1,6 +1,8 @@
 package imageloader.shiming.com.shimingqiang;
 
 
+import imageloader.shiming.com.shimingqiang.back.DoodleEnum;
+
 /**
  * Created by $ zhoudeheng on 2015/12/8.
  * Email zhoudeheng@qccr.com

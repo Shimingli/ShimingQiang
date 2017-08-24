@@ -50,15 +50,6 @@ public abstract class InsertableObjectBase {
         firePropertyChanged(PROPERTY_ID_DRAWNRECTF, oldValue, initRectF);
     }
 
-    /**
-     * 是否可以被选中。默认为false
-     *
-     * @return
-     */
-    public boolean isSelectable() {
-        return false;
-    }
-
 
 
     public Matrix getMatrix() {

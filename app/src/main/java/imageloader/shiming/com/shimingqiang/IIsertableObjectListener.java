@@ -12,12 +12,10 @@ public interface IIsertableObjectListener {
     void onAdded(List<InsertableObjectBase> list,
                  boolean fromUndoRedo);
 
-    void onRemoved(List<InsertableObjectBase> list,
-                   boolean fromUndoRedo);
 
     void onClear();
 
-    void onClearStrokes();
+
 
 
 }

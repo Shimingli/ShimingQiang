@@ -16,15 +16,6 @@ public interface IModelManager {
 
 
 
-    void addInsertableObject(InsertableObjectBase object,
-                             boolean fromUndoRedo);
-
-
-
-    void removeInsertableObject(InsertableObjectBase object,
-                                boolean fromUndoRedo);
-
-
 
     void addIsertableObjectListener(IIsertableObjectListener listener);
 
@@ -56,6 +47,6 @@ public interface IModelManager {
      * 如果当前的{@link ISelectView} 显示，则dismiss掉。 该方法并不会修改一个
      * {@link InsertableObjectBase} object的选中状态
      */
-    void dismissSelectView();
+
 
 }

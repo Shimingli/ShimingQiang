@@ -17,11 +17,6 @@ import android.graphics.Rect;
  */
 public class ClearOperation extends DoodleOperation {
 
-    // public ClearOperation(SurfaceHolder surfaceHolder, FrameCache frameCache,
-    // List<DrawTool> allDrawTools, CommandsManager commandsManager) {
-    // super(surfaceHolder, frameCache, allDrawTools, commandsManager);
-    // // TODO Auto-generated constructor stub
-    // }
     public ClearOperation(FrameCache frameCache, IModelManager modelManager,
                           IVisualManager visualManager) {
         super(frameCache, modelManager, visualManager);
@@ -29,20 +24,13 @@ public class ClearOperation extends DoodleOperation {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // TODO Auto-generated method stub
         mFrameCache.clearBitmap();
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
     }
 
-    @Override
-    public ICommand onCreateCommand() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
     public Rect computerDirty() {
-        // TODO Auto-generated method stub
         return null;
     }
 }

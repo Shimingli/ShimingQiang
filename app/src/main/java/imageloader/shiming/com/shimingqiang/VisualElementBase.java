@@ -107,17 +107,6 @@ public abstract class VisualElementBase implements
     }
 
     /**
-     * 返回删除时候的操作 默认的{@link RemovedOperation}，将返回一个{@link RemovedCommond}
-     *
-     * @return
-     */
-    public RemovedOperation createdRemovedOperation() {
-        return new RemovedOperation(mInternalDoodle.getFrameCache(),
-                mInternalDoodle.getModelManager(),
-                mInternalDoodle.getVisualManager(), mInsertableObject);
-    }
-
-    /**
      * 整个可绘制区域
      *
      * @return

@@ -14,7 +14,6 @@ import android.graphics.RectF;
 public class AddedOperation extends DoodleOperation {
     protected InsertableObjectBase mInsertableObject;
     private VisualElementBase mVisualElement;
-    private AddedCommand mDrawCommand;
 
     public AddedOperation(FrameCache frameCache, IModelManager modelManager,
                           IVisualManager visualManager, InsertableObjectBase insertableObject) {
@@ -41,15 +40,7 @@ public class AddedOperation extends DoodleOperation {
         if (mVisualElement == null)
             return null;
         Rect rect = null;
-        // if (mVisualStroke.isSegmentDraw()) {
-        // rect = mVisualStroke.getDirtyRect();
-        // } else {
-        // RectF rectF = mVisualStroke.getBounds();
-        // if (rectF == null)
-        // return null;
-        // rect = new Rect((int) rectF.left, (int) rectF.top,
-        // (int) rectF.right, (int) rectF.bottom);
-        // }
+
         RectF rectF = mVisualElement.getBounds();
         if (rectF == null)
             return null;
@@ -58,15 +49,5 @@ public class AddedOperation extends DoodleOperation {
         return rect;
     }
 
-    @Override
-    public ICommand onCreateCommand() {
-        // TODO Auto-generated method stub
-        // ICommand command = null;
-        // command = new DrawCommand(mInsertableObject, mModelManager);
-        // return command;
-        // return null;
-        mDrawCommand = new AddedCommand(mInsertableObject, mModelManager);
-        return mDrawCommand;
-    }
 
 }

@@ -18,14 +18,13 @@ public class EditDrawStrategy extends DrawStrategy {
 
     @Override
     public void draw() {
-        // TODO Auto-generated method stub
+
         drawCache();
         drawVisualElement();
     }
 
     @Override
     protected void updateCache() {
-        // TODO Auto-generated method stub
 
     }
 }
